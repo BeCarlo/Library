@@ -19,17 +19,17 @@
     <Filter Include="Source Files\Math">
       <UniqueIdentifier>{4d7267a6-e22e-4eea-85a4-f31fc7470b5d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Math\Vector">
+    <Filter Include="Source Files\Math\Angles">
+      <UniqueIdentifier>{f5322947-fbb3-46f1-9dfb-7e92a45a8eae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Math\Vectors">
       <UniqueIdentifier>{c89cbd11-4682-4bd2-9f1a-dbb5366c74eb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Math\Vector">
-      <UniqueIdentifier>{e68c8135-967c-4728-80d5-a4d90dfe7cba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Math\Angle">
+    <Filter Include="Header Files\Math\Angles">
       <UniqueIdentifier>{841aca61-4e98-4735-b238-7ecc09f2e53e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Math\Angle">
-      <UniqueIdentifier>{07017099-65a9-4aff-aebc-8550bf2a9172}</UniqueIdentifier>
+    <Filter Include="Source Files\Math\Vectors">
+      <UniqueIdentifier>{e68c8135-967c-4728-80d5-a4d90dfe7cba}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -37,54 +37,57 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Vector3D.h">
-      <Filter>Header Files\Math\Vector</Filter>
+      <Filter>Header Files\Math\Vectors</Filter>
     </ClCompile>
     <ClCompile Include="Vector2D.cpp">
-      <Filter>Source Files\Math\Vector</Filter>
-    </ClCompile>
-    <ClCompile Include="Vector4D.cpp">
-      <Filter>Source Files\Math\Vector</Filter>
+      <Filter>Source Files\Math\Vectors</Filter>
     </ClCompile>
     <ClCompile Include="Vector3D.cpp">
-      <Filter>Source Files\Math\Vector</Filter>
-    </ClCompile>
-    <ClCompile Include="MathFuctions.cpp">
-      <Filter>Source Files\Math</Filter>
+      <Filter>Source Files\Math\Vectors</Filter>
     </ClCompile>
     <ClCompile Include="CoreMacro.h">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="Quaternion.cpp">
-      <Filter>Source Files\Math\Angle</Filter>
-    </ClCompile>
     <ClCompile Include="EulerAngle.cpp">
-      <Filter>Source Files\Math\Angle</Filter>
+      <Filter>Source Files\Math\Angles</Filter>
+    </ClCompile>
+    <ClCompile Include="Quaternion.cpp">
+      <Filter>Source Files\Math\Angles</Filter>
+    </ClCompile>
+    <ClCompile Include="RotationMatrix.cpp">
+      <Filter>Source Files\Math\Angles</Filter>
+    </ClCompile>
+    <ClCompile Include="AxisAngle.cpp">
+      <Filter>Source Files\Math\Angles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MathVariable.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
-    <ClInclude Include="MathVector.h">
-      <Filter>Header Files\Math\Vector</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector4D.h">
-      <Filter>Header Files\Math\Vector</Filter>
+    <ClInclude Include="MathVectors.h">
+      <Filter>Header Files\Math\Vectors</Filter>
     </ClInclude>
     <ClInclude Include="Vector2D.h">
-      <Filter>Header Files\Math\Vector</Filter>
+      <Filter>Header Files\Math\Vectors</Filter>
     </ClInclude>
     <ClInclude Include="MathFuctions.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="Quaternion.h">
-      <Filter>Header Files\Math\Angle</Filter>
+      <Filter>Header Files\Math\Angles</Filter>
     </ClInclude>
     <ClInclude Include="EulerAngle.h">
-      <Filter>Header Files\Math\Angle</Filter>
+      <Filter>Header Files\Math\Angles</Filter>
     </ClInclude>
-    <ClInclude Include="MathAngle.h">
-      <Filter>Header Files\Math\Angle</Filter>
+    <ClInclude Include="MathAngles.h">
+      <Filter>Header Files\Math\Angles</Filter>
+    </ClInclude>
+    <ClInclude Include="RotationMatrix.h">
+      <Filter>Header Files\Math\Angles</Filter>
+    </ClInclude>
+    <ClInclude Include="AxisAngle.h">
+      <Filter>Header Files\Math\Angles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -83,7 +83,7 @@ namespace Math {
 		return *this;
 	}
 
-	template<typename T> inline TVector3D<T> TVector3D<T>::lerp(const TVector3D<T>& vectorA, const TVector3D<T>& vectorB, T k) {
+	template<typename T> FINLINE TVector3D<T> TVector3D<T>::lerp(const TVector3D<T>& vectorA, const TVector3D<T>& vectorB, T k) {
 		return TVector3D<T>(vectorA).lerp(vectorB, k);
 	}
 
@@ -102,7 +102,7 @@ namespace Math {
 			_x * vector.getY() - _y * vector.getX());
 	}
 
-	template<typename T> inline static TVector3D<T> TVector3D<T>::crossProduct(const TVector3D<T>& vectorA, const TVector3D<T>& vectorB) {
+	template<typename T> FINLINE TVector3D<T> TVector3D<T>::crossProduct(const TVector3D<T>& vectorA, const TVector3D<T>& vectorB) {
 		return vectorA ^ vectorB;
 	}
 
@@ -110,7 +110,7 @@ namespace Math {
 		return _x * vector.getX() + _y * vector.getY() + _z * vector.getZ();
 	}
 
-	template<typename T> inline static T TVector3D<T>::dot(const TVector3D<T>& vectorA, const TVector3D<T>& vectorB) {
+	template<typename T> FINLINE T TVector3D<T>::dot(const TVector3D<T>& vectorA, const TVector3D<T>& vectorB) {
 		return vectorA.dot(vectorB);
 	}
 
@@ -140,14 +140,14 @@ namespace Math {
 			_z - vector.getZ());
 	}
 
-	template<typename T> FINLINE bool TVector3D<T>::operator==(const TVector3D<T>& vector) {
+	template<typename T> FINLINE bool TVector3D<T>::operator==(const TVector3D<T>& vector) const {
 		bool isXEqual = abs(_x - vector.getX()) <= epsilon;
 		bool isYEqual = abs(_y - vector.getY()) <= epsilon;
 		bool isZEqual = abs(_z - vector.getZ()) <= epsilon;
 		return isXEqual && isYEqual && isZEqual;
 	}
 
-	template<typename T> FINLINE bool TVector3D<T>::equals(const TVector3D<T>& vector, T tolerance) {
+	template<typename T> FINLINE bool TVector3D<T>::equals(const TVector3D<T>& vector, T tolerance) const {
 		bool isXEqual = abs(_x - vector.getX()) <= tolerance;
 		bool isYEqual = abs(_y - vector.getY()) <= tolerance;
 		bool isZEqual = abs(_z - vector.getZ()) <= tolerance;

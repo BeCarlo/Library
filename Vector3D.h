@@ -2,12 +2,13 @@
 #define VECTOR_3D_H
 
 #include <type_traits>
-
 #include "CoreMacro.h"
 #include "MathVariable.h"
 #include "MathFuctions.h"
 
 namespace Math {
+
+	template<typename T> class TQuaternion;
 
 	template<typename T> class TVector3D {
 		static_assert(std::is_floating_point_v<T>, "T must be floating point");
@@ -62,7 +63,7 @@ namespace Math {
 		/** @return Backward Vector (0,0,-1) */
 		static const TVector3D<T> backwardVector;
 
-		inline static TVector3D<T> origin() { return zeroVector; }
+		FINLINE static TVector3D<T> origin() { return zeroVector; }
 
 		FINLINE T squaredNorm() const;
 
@@ -72,7 +73,6 @@ namespace Math {
 		FINLINE void operator *=(const T k);
 		//out-of-place scaling
 		FINLINE TVector3D<T> operator *(const T k) const;
-		FINLINE friend TVector3D<T> operator *(const T k, const TVector3D<T>& vector);
 
 		//in-place
 		FINLINE TVector3D<T> normalize();
@@ -80,7 +80,7 @@ namespace Math {
 		FINLINE TVector3D<T> normalized() const;
 
 		FINLINE TVector3D<T> lerp(const TVector3D<T>& vector, T k);
-		inline static TVector3D<T> lerp(const TVector3D<T>& vectorA, const TVector3D<T>& vectorB, T k);
+		FINLINE static TVector3D<T> lerp(const TVector3D<T>& vectorA, const TVector3D<T>& vectorB, T k);
 
 		//in-place
 		FINLINE void operator ^=(const TVector3D<T>& vector);
@@ -88,10 +88,10 @@ namespace Math {
 		//out-of-place
 		FINLINE TVector3D<T> operator ^(const TVector3D<T>& vector) const;
 		FINLINE TVector3D<T> crossed(const TVector3D<T>& vector) const { return *this ^ vector; }
-		inline static TVector3D<T> crossProduct(const TVector3D<T>& vectorA, const TVector3D<T>& vectorB);
+		FINLINE static TVector3D<T> crossProduct(const TVector3D<T>& vectorA, const TVector3D<T>& vectorB);
 
 		FINLINE T dot(const TVector3D<T>& vector) const;
-		inline static T dot(const TVector3D<T>& vectorA, const TVector3D<T>& vectorB);
+		FINLINE static T dot(const TVector3D<T>& vectorA, const TVector3D<T>& vectorB);
 
 		//in-place operations
 		FINLINE void operator +=(const TVector3D<T>& vector);
@@ -101,12 +101,14 @@ namespace Math {
 		FINLINE TVector3D<T> operator +(const TVector3D<T>& vector);
 		FINLINE TVector3D<T> operator -(const TVector3D<T>& vector);
 
-		FINLINE bool operator ==(const TVector3D<T>& vector);
-		FINLINE bool equals(const TVector3D<T>& vector, T tolerance = epsilon);
+		FINLINE bool operator ==(const TVector3D<T>& vector) const;
+		FINLINE bool equals(const TVector3D<T>& vector, T tolerance = epsilon) const;
 
 		FINLINE void print();
 
 	};
+
+	template<typename T> inline static TVector3D<T> operator *(const T k, const TVector3D<T>& vector);
 }
 
 #endif // !VECTOR_3D_H

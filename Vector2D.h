@@ -50,7 +50,7 @@ namespace Math {
 		/** @return Down Vector (0,-1) */
 		static const TVector2D<T> downVector;
 
-		inline static TVector2D<T> origin() { return zeroVector; }
+		FINLINE static TVector2D<T> origin() { return zeroVector; }
 
 		FINLINE T squaredNorm() const;
 
@@ -60,7 +60,6 @@ namespace Math {
 		FINLINE void operator *=(const T k);
 		//out-of-place scaling
 		FINLINE TVector2D<T> operator *(const T k) const;
-		FINLINE friend TVector2D<T> operator *(const T k, const TVector2D<T>& vector);
 
 		//in-place
 		FINLINE TVector2D<T> normalize();
@@ -68,15 +67,15 @@ namespace Math {
 		FINLINE TVector2D<T> normalized() const;
 
 		FINLINE TVector2D<T> lerp(const TVector2D<T>& vector, T k);
-		inline static TVector2D<T> lerp(const TVector2D<T>& vectorA, const TVector2D<T>& vectorB, T k);
+		FINLINE static TVector2D<T> lerp(const TVector2D<T>& vectorA, const TVector2D<T>& vectorB, T k);
 
 		//out-of-place
 		FINLINE T operator ^(const TVector2D<T>& vector) const;
 		FINLINE T crossed(const TVector2D<T>& vector) const { return *this ^ vector; }
-		inline static T crossProduct(const TVector2D<T>& vectorA, const TVector2D<T>& vectorB);
+		FINLINE static T crossProduct(const TVector2D<T>& vectorA, const TVector2D<T>& vectorB);
 
 		FINLINE T dot(const TVector2D<T>& vector) const;
-		inline static T dot(const TVector2D<T>& vectorA, const TVector2D<T>& vectorB);
+		FINLINE static T dot(const TVector2D<T>& vectorA, const TVector2D<T>& vectorB);
 
 		//in-place operations
 		FINLINE void operator +=(const TVector2D<T>& vector);
@@ -86,9 +85,13 @@ namespace Math {
 		FINLINE TVector2D<T> operator +(const TVector2D<T>& vector);
 		FINLINE TVector2D<T> operator -(const TVector2D<T>& vector);
 
-		FINLINE bool operator ==(const TVector2D<T>& vector);
+		FINLINE bool operator ==(const TVector2D<T>& vector) const;
+		FINLINE bool equals(const TVector2D<T>& vector, T tolerance = epsilon) const;
 
 		FINLINE void print();
 	};
+
+	template<typename T> inline static TVector2D<T> operator *(const T k, const TVector2D<T>& vector);
+
 }
 #endif // !VECTOR_2D_H

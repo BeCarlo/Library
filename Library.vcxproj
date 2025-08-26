@@ -127,25 +127,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AxisAngle.cpp" />
     <ClCompile Include="CoreMacro.h" />
     <ClCompile Include="EulerAngle.cpp" />
-    <ClCompile Include="MathFuctions.cpp" />
     <ClCompile Include="Quaternion.cpp" />
+    <ClCompile Include="RotationMatrix.cpp" />
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="Vector2D.cpp" />
+    <ClInclude Include="AxisAngle.h" />
     <ClInclude Include="EulerAngle.h" />
-    <ClInclude Include="MathAngle.h" />
+    <ClInclude Include="MathAngles.h" />
     <ClInclude Include="MathFuctions.h" />
+    <ClInclude Include="RotationMatrix.h" />
     <ClInclude Include="Vector2D.h" />
     <ClCompile Include="Vector3D.cpp" />
     <ClCompile Include="Vector3D.h" />
-    <ClCompile Include="Vector4D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MathVariable.h" />
-    <ClInclude Include="MathVector.h" />
+    <ClInclude Include="MathVectors.h" />
     <ClInclude Include="Quaternion.h" />
-    <ClInclude Include="Vector4D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
