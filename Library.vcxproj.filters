@@ -33,60 +33,60 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Test.cpp">
+    <ClCompile Include="src\Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector3D.h">
+    <ClCompile Include="inc\Math\Vectors\Vector3D.h">
       <Filter>Header Files\Math\Vectors</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
+    <ClCompile Include="src\Math\Vectors\Vector2D.cpp">
       <Filter>Source Files\Math\Vectors</Filter>
     </ClCompile>
-    <ClCompile Include="Vector3D.cpp">
+    <ClCompile Include="src\Math\Vectors\Vector3D.cpp">
       <Filter>Source Files\Math\Vectors</Filter>
     </ClCompile>
-    <ClCompile Include="CoreMacro.h">
+    <ClCompile Include="inc\CoreMacro.h">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="EulerAngle.cpp">
+    <ClCompile Include="src\Math\Angles\EulerAngle.cpp">
       <Filter>Source Files\Math\Angles</Filter>
     </ClCompile>
-    <ClCompile Include="Quaternion.cpp">
+    <ClCompile Include="src\Math\Angles\Quaternion.cpp">
       <Filter>Source Files\Math\Angles</Filter>
     </ClCompile>
-    <ClCompile Include="RotationMatrix.cpp">
+    <ClCompile Include="src\Math\Angles\RotationMatrix.cpp">
       <Filter>Source Files\Math\Angles</Filter>
     </ClCompile>
-    <ClCompile Include="AxisAngle.cpp">
+    <ClCompile Include="src\Math\Angles\AxisAngle.cpp">
       <Filter>Source Files\Math\Angles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MathVariable.h">
+    <ClInclude Include="inc\Math\MathVariable.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
-    <ClInclude Include="MathVectors.h">
+    <ClInclude Include="inc\Math\Vectors\MathVectors.h">
       <Filter>Header Files\Math\Vectors</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2D.h">
+    <ClInclude Include="inc\Math\Vectors\Vector2D.h">
       <Filter>Header Files\Math\Vectors</Filter>
     </ClInclude>
-    <ClInclude Include="MathFuctions.h">
+    <ClInclude Include="inc\Math\MathFuctions.h">
       <Filter>Header Files\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Quaternion.h">
+    <ClInclude Include="inc\Math\Angles\Quaternion.h">
       <Filter>Header Files\Math\Angles</Filter>
     </ClInclude>
-    <ClInclude Include="EulerAngle.h">
+    <ClInclude Include="inc\Math\Angles\EulerAngle.h">
       <Filter>Header Files\Math\Angles</Filter>
     </ClInclude>
-    <ClInclude Include="MathAngles.h">
+    <ClInclude Include="inc\Math\Angles\MathAngles.h">
       <Filter>Header Files\Math\Angles</Filter>
     </ClInclude>
-    <ClInclude Include="RotationMatrix.h">
+    <ClInclude Include="inc\Math\Angles\RotationMatrix.h">
       <Filter>Header Files\Math\Angles</Filter>
     </ClInclude>
-    <ClInclude Include="AxisAngle.h">
+    <ClInclude Include="inc\Math\Angles\AxisAngle.h">
       <Filter>Header Files\Math\Angles</Filter>
     </ClInclude>
   </ItemGroup>

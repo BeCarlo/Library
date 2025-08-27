@@ -104,6 +104,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjecDir)pch;$(ProjecDir)inc;$(ProjecDir)src;$(ProjecDir)inc/Math;$(ProjecDir)inc/Math/Angles;$(ProjecDir)inc/Math/Vectors;$(ProjecDir)src/Math;$(ProjecDir)src/Math/Angles;$(ProjecDir)src/Math/Vectors;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,26 +129,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AxisAngle.cpp" />
-    <ClCompile Include="CoreMacro.h" />
-    <ClCompile Include="EulerAngle.cpp" />
-    <ClCompile Include="Quaternion.cpp" />
-    <ClCompile Include="RotationMatrix.cpp" />
-    <ClCompile Include="Test.cpp" />
-    <ClCompile Include="Vector2D.cpp" />
-    <ClInclude Include="AxisAngle.h" />
-    <ClInclude Include="EulerAngle.h" />
-    <ClInclude Include="MathAngles.h" />
-    <ClInclude Include="MathFuctions.h" />
-    <ClInclude Include="RotationMatrix.h" />
-    <ClInclude Include="Vector2D.h" />
-    <ClCompile Include="Vector3D.cpp" />
-    <ClCompile Include="Vector3D.h" />
+    <ClCompile Include="src\Math\Angles\AxisAngle.cpp" />
+    <ClCompile Include="inc\CoreMacro.h" />
+    <ClCompile Include="src\Math\Angles\EulerAngle.cpp" />
+    <ClCompile Include="src\Math\Angles\Quaternion.cpp" />
+    <ClCompile Include="src\Math\Angles\RotationMatrix.cpp" />
+    <ClCompile Include="src\Test.cpp" />
+    <ClCompile Include="src\Math\Vectors\Vector2D.cpp" />
+    <ClInclude Include="inc\Math\Angles\AxisAngle.h" />
+    <ClInclude Include="inc\Math\Angles\EulerAngle.h" />
+    <ClInclude Include="inc\Math\Angles\MathAngles.h" />
+    <ClInclude Include="inc\Math\MathFuctions.h" />
+    <ClInclude Include="inc\Math\Angles\RotationMatrix.h" />
+    <ClInclude Include="inc\Math\Vectors\Vector2D.h" />
+    <ClCompile Include="src\Math\Vectors\Vector3D.cpp" />
+    <ClCompile Include="inc\Math\Vectors\Vector3D.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MathVariable.h" />
-    <ClInclude Include="MathVectors.h" />
-    <ClInclude Include="Quaternion.h" />
+    <ClInclude Include="inc\Math\MathVariable.h" />
+    <ClInclude Include="inc\Math\Vectors\MathVectors.h" />
+    <ClInclude Include="inc\Math\Angles\Quaternion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
