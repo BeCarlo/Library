@@ -11,7 +11,7 @@ namespace Math {
 	template<typename T> FINLINE TQuaternion<T> TAxisAngle<T>::quaternion() const {
 		TVector3D<T> axisN = _axis.normalized();
 		T angle2 = _angle * T(0.5);
-		return TQuaternion<T>(axisN * Funtions::tSin(angle2), Funtions::tCos(angle2));
+		return TQuaternion<T>(axisN * Functions::tSin(angle2), Functions::tCos(angle2));
 	}
 
 

@@ -134,8 +134,8 @@
     <ClCompile Include="src\Math\Angles\EulerAngle.cpp" />
     <ClCompile Include="src\Math\Angles\Quaternion.cpp" />
     <ClCompile Include="src\Math\Angles\RotationMatrix.cpp" />
-    <ClCompile Include="src\Test.cpp" />
     <ClCompile Include="src\Math\Vectors\Vector2D.cpp" />
+    <ClCompile Include="src\test.cpp" />
     <ClInclude Include="inc\Math\Angles\AxisAngle.h" />
     <ClInclude Include="inc\Math\Angles\EulerAngle.h" />
     <ClInclude Include="inc\Math\Angles\MathAngles.h" />

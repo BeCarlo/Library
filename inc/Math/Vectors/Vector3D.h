@@ -39,6 +39,9 @@ namespace Math {
 		FINLINE void Y(const T y) { setY(y); }
 		FINLINE void Z(const T z) { setZ(z); }
 
+		FINLINE TVector3D<T> operator -() const;
+
+
 		/** @return Zero Vector (0,0,0) */
 		static const TVector3D<T> zeroVector;
 
@@ -98,8 +101,8 @@ namespace Math {
 		FINLINE void operator -=(const TVector3D<T>& vector);
 
 		//out-place operations
-		FINLINE TVector3D<T> operator +(const TVector3D<T>& vector);
-		FINLINE TVector3D<T> operator -(const TVector3D<T>& vector);
+		FINLINE TVector3D<T> operator +(const TVector3D<T>& vector) const;
+		FINLINE TVector3D<T> operator -(const TVector3D<T>& vector) const;
 
 		FINLINE bool operator ==(const TVector3D<T>& vector) const;
 		FINLINE bool equals(const TVector3D<T>& vector, T tolerance = epsilon) const;

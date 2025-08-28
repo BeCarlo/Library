@@ -8,6 +8,7 @@
 
 namespace Math {
 
+	template<typename T> class TVector3D;
 	template<typename T> class TQuaternion;
 
 	enum MatrixElement {
@@ -49,10 +50,14 @@ namespace Math {
 		/** @return Quaternion as Vector4D */
 		FINLINE TQuaternion<T> getElements(const MatrixElements elementsPosition) const;
 
+		FINLINE TVector3D<T> getElements3D(const MatrixElements elementsPosition) const;
+
 		FINLINE void setElement(const MatrixElement elementPosition, T element);
 		/** @param Quaternion as a Vector4D */
 		FINLINE void setElements(const MatrixElements elementsPosition, const TQuaternion<T>& elements);
 
+
+		FINLINE TVector3D<T> operator*(const TVector3D<T>& vector) const;
 
 		FINLINE bool operator ==(const TRMatrix<T>& matrix) const;
 		FINLINE bool equals(const TRMatrix<T>& matrix, T tolerance = epsilon) const;

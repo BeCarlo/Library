@@ -25,7 +25,7 @@ namespace Math {
 
 	//Vectors
 	template <typename T> const TVector2D<T> TVector2D<T>::zeroVector(0, 0);
-	template <typename T> const TVector2D<T> TVector2D<T>::oneVector(0, 0);
+	template <typename T> const TVector2D<T> TVector2D<T>::oneVector(1, 1);
 	template <typename T> const TVector2D<T> TVector2D<T>::rightVector(1, 0);
 	template <typename T> const TVector2D<T> TVector2D<T>::leftVector(-1, 0);
 	template <typename T> const TVector2D<T> TVector2D<T>::upVector(0, 1);
@@ -100,13 +100,13 @@ namespace Math {
 		_y - vector.getY();
 	}
 
-	template<typename T> FINLINE TVector2D<T> TVector2D<T>::operator+(const TVector2D<T>& vector) {
+	template<typename T> FINLINE TVector2D<T> TVector2D<T>::operator+(const TVector2D<T>& vector) const {
 		return TVector2D<T>(
 			_x + vector.getX(),
 			_y + vector.getY());
 	}
 
-	template<typename T> FINLINE TVector2D<T> TVector2D<T>::operator-(const TVector2D<T>& vector) {
+	template<typename T> FINLINE TVector2D<T> TVector2D<T>::operator-(const TVector2D<T>& vector) const {
 		return TVector2D<T>(
 			_x - vector.getX(),
 			_y - vector.getY());

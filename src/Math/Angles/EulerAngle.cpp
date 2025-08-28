@@ -22,17 +22,17 @@ namespace Math {
 
 
 
-		const T cosX = Funtions::tCos(xRad * 0.5);
-		const T senX = Funtions::tSin(xRad * 0.5);
-		const T cosY = Funtions::tCos(yRad * 0.5);
-		const T senY = Funtions::tSin(yRad * 0.5);
-		const T cosZ = Funtions::tCos(zRad * 0.5);
-		const T senZ = Funtions::tSin(zRad * 0.5);
+		const T cosX = Functions::tCos(xRad * 0.5);
+		const T senX = Functions::tSin(xRad * 0.5);
+		const T cosY = Functions::tCos(yRad * 0.5);
+		const T senY = Functions::tSin(yRad * 0.5);
+		const T cosZ = Functions::tCos(zRad * 0.5);
+		const T senZ = Functions::tSin(zRad * 0.5);
 
 		return TQuaternion<T>(
-			cosX*senY*senZ - senX*cosY*cosZ,
-			-cosX*senY*cosZ - senX*cosY*senZ,
-			cosX*cosY*senZ - senX*senY*cosZ,
+			senX * cosY * cosZ - cosX * senY * senZ,
+			cosX * senY * cosZ + senX * cosY * senZ,
+			cosX * cosY * senZ - senX * senY * cosZ,
 			cosX*cosY*cosZ + senX*senY*senZ
 		);
 	}

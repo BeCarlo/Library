@@ -9,6 +9,6 @@
 typedef Math::TAxisAngle<double> AxisAngle;
 typedef Math::TEulerAngle<double> EulerAngle;
 typedef Math::TQuaternion<double> Quat;
-typedef Math::TRMatrix<double> Matrix;
+typedef Math::TRMatrix<double> RMatrix;
 
 #endif // !MATH_ANGLE_H

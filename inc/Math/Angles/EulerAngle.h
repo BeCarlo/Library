@@ -24,6 +24,7 @@ namespace Math {
 		FINLINE TQuaternion<T> quaternion() const;
 
 		FINLINE operator TVector3D<T>() const;
+
 	};
 
 

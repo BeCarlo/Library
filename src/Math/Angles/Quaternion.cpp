@@ -32,8 +32,9 @@ namespace Math {
 
 	template<typename T> FINLINE TAxisAngle<T> TQuaternion<T>::axisAngle() const {
 
-		const T angle = T(2.0) * (T(1.0) /  Funtions::tCos(_w));
-		const TVector3D<T> axis = vector3D() * (T(1.0) / Funtions::tSin(angle * T(0.5)));
+		const T angle = T(2.0) * Functions::tACos(_w);
+		const T divisor = T(1.0) / Functions::tSqrt(T(1.0) - _w);
+		const TVector3D<T> axis = vector3D() * divisor;
 
 		return TAxisAngle<T>(axis, angle);
 	}
@@ -41,19 +42,26 @@ namespace Math {
 	template<typename T> FINLINE TEulerAngle<T> TQuaternion<T>::eulerAngle() const {
 		const T one = static_cast<T>(1.0);
 		const T two = static_cast<T>(2.0);
-		const T SingularityTest = _z * _x - _w * _y;
-		const T YawY = two * (_w * _z + _x * _y);
-		const T YawX = one - two * (Funtions::tSquare(_y) + Funtions::tSquare(_z));
-		const T radToDeg = static_cast<T>(180.0 * pi);
+		const T radToDeg = static_cast<T>(180.0 / pi);
 
-		const T Pitch = std::asin(two * SingularityTest) * radToDeg;
-		const T Yaw = Funtions::tAtan2(YawY, YawX) * radToDeg;
+		const T pitchX = two * (_w * _x + _y * _z);
+		const T pitchY = one - two * (_x * _x + _y * _y);
+		const T pitch = Functions::tAtan2(pitchX, pitchY) * radToDeg;
+		//const T pitch = std::asin(two * SingularityTest) * radToDeg;
 
-		T x = two * (_w * _z + _x * _y);
-		T y = one - two * (_y * _y + _z * _z);
-		const T Roll = Funtions::tAtan2(x, y) * radToDeg;
+		const T asinCase = Functions::tClamp(two * (_w * _y - _z * _x), T(-1.0), T(1.0));
 
-		return TEulerAngle<T>(Pitch, Yaw, Roll);
+		const T yaw = std::asin(asinCase) * radToDeg;
+
+		//const T yaw = Functions::tAtan2(yawX, yawY) * radToDeg;
+
+		//T x = two * (_w * _x + _y * _z);
+		//T y = one - two * (_x * _x + _y * _y);
+		T rollX = two * (_w * _z + _x * _y);
+		T rollY = one - two * (Functions::tSquare(_y) + Functions::tSquare(_z));
+		const T roll = Functions::tAtan2(rollX, rollY) * radToDeg;
+
+		return TEulerAngle<T>(pitch, yaw, roll);
 	}
 
 	template<typename T> FINLINE TRMatrix<T> TQuaternion<T>::rotationMatrix() const {
@@ -72,12 +80,23 @@ namespace Math {
 		const T two = static_cast<T>(2.0);
 
 		//Quaternions as Vectors4D
-		const TQuaternion<T> x = TQuaternion<T>(one - two * (yy + zz), two * (xy + zw), two *(xz - yw), zero);
-		const TQuaternion<T> y = TQuaternion<T>(two * (xy - zw), one - two * (xx + zz), two * (yz + xw), zero);
-		const TQuaternion<T> z = TQuaternion<T>(two * (xz + yw), two * (yz - xw), one - two * (xx + yy), zero);
+		const TQuaternion<T> x = TQuaternion<T>(one - two * (yy + zz), two * (xy - zw), two *(xz + yw), zero);
+		const TQuaternion<T> y = TQuaternion<T>(two * (xy + zw), one - two * (xx + zz), two * (yz - xw), zero);
+		const TQuaternion<T> z = TQuaternion<T>(two * (xz - yw), two * (yz + xw), one - two * (xx + yy), zero);
 		const TQuaternion<T> w = TQuaternion<T>(zero, zero, zero, one);
 
-		return TRMatrix<T>(x, y, z, w);
+		TRMatrix<T> matrix;
+		matrix.setElements(ROW0, x);
+		matrix.setElements(ROW1, y);
+		matrix.setElements(ROW2, z);
+		matrix.setElements(ROW3, w);
+
+		return matrix;
+	}
+	
+	template<typename T> FINLINE TQuaternion<T> TQuaternion<T>::operator-() const {
+		return TQuaternion<T>(
+			-_x, -_y, -_z, -_w);
 	}
 
 	template<typename T> FINLINE T TQuaternion<T>::getX() const {
@@ -112,6 +131,9 @@ namespace Math {
 	template<typename T> FINLINE void TQuaternion<T>::setW(const T w) {
 		_w = w;
 	}
+
+	template <typename T> const TQuaternion<T> TQuaternion<T>::oneQuaternion(1, 1, 1, 1);
+
 
 	template<typename T> FINLINE TVector3D<T> TQuaternion<T>::getAxisX() const {
 		return rotate(TVector3D<T>(static_cast<T>(1.0), static_cast<T>(0.0), static_cast<T>(0.0)));
@@ -177,12 +199,12 @@ namespace Math {
 	}
 
 	template<typename T> FINLINE TQuaternion<T> TQuaternion<T>::normalize() {
-		*this *= 1.0f / norm();
+		*this *= T(1.0) / norm();
 		return *this;
 	}
 
 	template<typename T> FINLINE TQuaternion<T> TQuaternion<T>::normalized() const {
-		return *this * (1.0f / norm());
+		return *this * (1.0 / norm());
 	}
 
 	template<typename T> FINLINE TQuaternion<T> TQuaternion<T>::conjugate() {
@@ -193,7 +215,7 @@ namespace Math {
 	}
 
 	template<typename T> FINLINE TQuaternion<T> TQuaternion<T>::conjugated() const {
-		return TQuaternion<T>(-_x, -_y, -_z, -_w);
+		return TQuaternion<T>(-_x, -_y, -_z, _w);
 	}
 
 	template<typename T> FINLINE T TQuaternion<T>::dot(const TQuaternion<T>& vector) const {

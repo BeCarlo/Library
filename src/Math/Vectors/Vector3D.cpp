@@ -32,9 +32,14 @@ namespace Math {
 		_z = z;
 	}
 
+	template<typename T> FINLINE TVector3D<T> TVector3D<T>::operator-() const {
+		return TVector3D<T>(
+			-_x, -_y, -_z);
+	}
+
 	//Vectors
 	template <typename T> const TVector3D<T> TVector3D<T>::zeroVector(0, 0, 0);
-	template <typename T> const TVector3D<T> TVector3D<T>::oneVector(0, 0, 0);
+	template <typename T> const TVector3D<T> TVector3D<T>::oneVector(1, 1, 1);
 	template <typename T> const TVector3D<T> TVector3D<T>::rightVector(1, 0, 0);
 	template <typename T> const TVector3D<T> TVector3D<T>::leftVector(-1, 0, 0);
 	template <typename T> const TVector3D<T> TVector3D<T>::upVector(0, 1, 0);
@@ -65,12 +70,12 @@ namespace Math {
 	}
 
 	template<typename T> FINLINE TVector3D<T> TVector3D<T>::normalize() {
-		*this *= 1.0f / norm();
+		*this *= 1.0 / norm();
 		return *this;
 	}
 
 	template<typename T> FINLINE TVector3D<T> TVector3D<T>::normalized() const {
-		return *this * (1.0f / norm());
+		return *this * (1.0 / norm());
 	}
 
 	template<typename T> FINLINE TVector3D<T> TVector3D<T>::lerp(const TVector3D<T>& vector, T k) {
@@ -126,14 +131,14 @@ namespace Math {
 		_z - vector.getZ();
 	}
 
-	template<typename T> FINLINE TVector3D<T> TVector3D<T>::operator+(const TVector3D<T>& vector) {
+	template<typename T> FINLINE TVector3D<T> TVector3D<T>::operator+(const TVector3D<T>& vector) const {
 		return TVector3D<T>(
 			_x + vector.getX(),
 			_y + vector.getY(),
 			_z + vector.getZ());
 	}
 
-	template<typename T> FINLINE TVector3D<T> TVector3D<T>::operator-(const TVector3D<T>& vector) {
+	template<typename T> FINLINE TVector3D<T> TVector3D<T>::operator-(const TVector3D<T>& vector) const {
 		return TVector3D<T>(
 			_x - vector.getX(),
 			_y - vector.getY(),
@@ -148,9 +153,9 @@ namespace Math {
 	}
 
 	template<typename T> FINLINE bool TVector3D<T>::equals(const TVector3D<T>& vector, T tolerance) const {
-		bool isXEqual = abs(_x - vector.getX()) <= tolerance;
-		bool isYEqual = abs(_y - vector.getY()) <= tolerance;
-		bool isZEqual = abs(_z - vector.getZ()) <= tolerance;
+		const bool isXEqual = abs(_x - vector.getX()) <= tolerance;
+		const bool isYEqual = abs(_y - vector.getY()) <= tolerance;
+		const bool isZEqual = abs(_z - vector.getZ()) <= tolerance;
 		return isXEqual && isYEqual && isZEqual;
 	}
 

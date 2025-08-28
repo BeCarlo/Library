@@ -16,13 +16,13 @@ namespace Math {
 		const T trace = _matrix[0][0] + _matrix[1][1] + _matrix[2][2];
 
 		if (trace > 0.0f) {
-			TQuaternion<T> quaternion(T(0.0), T(0.0), T(0.0), Funtions::tSqrt(T(1.0) + trace) * T(0.5));
-			const T w2 = (T(1.0) / quaternion.getW()) * T(0.5);
 
-			quaternion.setX((_matrix[2][1] - _matrix[1][2]) * w2);
-			quaternion.setY((_matrix[0][2] - _matrix[2][0]) * w2);
-			quaternion.setZ((_matrix[1][0] - _matrix[0][1]) * w2);
-			return quaternion;
+			const T divisor = T(1.0) / (Functions::tSqrt(T(1.0) + trace) * T(2.0));
+			const T x = (_matrix[2][1] - _matrix[1][2]) * divisor;
+			const T y = (_matrix[0][2] - _matrix[2][0]) * divisor;
+			const T z = (_matrix[1][0] - _matrix[0][1]) * divisor;
+			const T w = T(0.25) / divisor;
+			return TQuaternion<T>(x, y, z, w);
 		}
 
 		char dElement = 0;
@@ -31,8 +31,8 @@ namespace Math {
 
 		const char next[3] = { 1, 2, 0 };
 		const char i = next[dElement];
-		const char j = next[j];
-		const T sqrt = Funtions::tSqrt(T(1.0) + _matrix[dElement][dElement] - _matrix[i][i] - _matrix[j][j]);
+		const char j = next[i];
+		const T sqrt = Functions::tSqrt(T(1.0) + _matrix[dElement][dElement] - _matrix[i][i] - _matrix[j][j]);
 
 		T quaternion[4];
 		quaternion[dElement] = T(0.5) * sqrt;
@@ -41,7 +41,7 @@ namespace Math {
 
 		quaternion[i] = (_matrix[i][dElement] + _matrix[dElement][i]) * divisor;
 		quaternion[j] = (_matrix[j][dElement] + _matrix[dElement][j]) * divisor;
-		quaternion[3] = (_matrix[j][i] - _matrix[i][j]) * divisor;
+		quaternion[3] = (_matrix[i][j] - _matrix[j][i]) * divisor;
 
 		return TQuaternion<T>(quaternion[0], quaternion[1], quaternion[2], quaternion[3]);
 	}
@@ -58,6 +58,14 @@ namespace Math {
 			return TQuaternion<T>(_matrix[elementsPosition][0], _matrix[elementsPosition][1], _matrix[elementsPosition][2], _matrix[elementsPosition][3]);
 		const int col = elementsPosition % 4;
 		return TQuaternion<T>(_matrix[0][col], _matrix[1][col], _matrix[2][col], _matrix[3][col]);
+	}
+
+	template<typename T> FINLINE TVector3D<T> TRMatrix<T>::getElements3D(const MatrixElements elementsPosition) const {
+		const bool isARow = elementsPosition < 4;
+		if (isARow)
+			return TVector3D<T>(_matrix[elementsPosition][0], _matrix[elementsPosition][1], _matrix[elementsPosition][2]);
+		const int col = elementsPosition % 4;
+		return TVector3D<T>(_matrix[0][col], _matrix[1][col], _matrix[2][col]);
 	}
 
 	template<typename T> FINLINE void TRMatrix<T>::setElement(const MatrixElement elementPosition, T elemen) {
@@ -80,6 +88,13 @@ namespace Math {
 		_matrix[1][col] = elements.getY();
 		_matrix[2][col] = elements.getZ();
 		_matrix[3][col] = elements.getW();
+	}
+
+
+
+	template<typename T> FINLINE TVector3D<T> TRMatrix<T>::operator*(const TVector3D<T>& vector) const {
+		return { getElements3D(ROW0).dot(vector),getElements3D(ROW1).dot(vector), getElements3D(ROW2).dot(vector) };
+
 	}
 
 	template<typename T> FINLINE bool TRMatrix<T>::operator==(const TRMatrix<T>& matrix) const {

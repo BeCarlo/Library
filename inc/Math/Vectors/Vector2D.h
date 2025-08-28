@@ -82,8 +82,8 @@ namespace Math {
 		FINLINE void operator -=(const TVector2D<T>& vector);
 
 		//out-place operations
-		FINLINE TVector2D<T> operator +(const TVector2D<T>& vector);
-		FINLINE TVector2D<T> operator -(const TVector2D<T>& vector);
+		FINLINE TVector2D<T> operator +(const TVector2D<T>& vector) const;
+		FINLINE TVector2D<T> operator -(const TVector2D<T>& vector) const;
 
 		FINLINE bool operator ==(const TVector2D<T>& vector) const;
 		FINLINE bool equals(const TVector2D<T>& vector, T tolerance = epsilon) const;

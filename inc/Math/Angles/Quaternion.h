@@ -45,6 +45,8 @@ namespace Math {
 		FINLINE T Z() const { return getZ(); }
 		FINLINE T W() const { return getW(); }
 
+		FINLINE TQuaternion<T> operator -() const;
+
 		FINLINE void setX(const T x);
 		FINLINE void setY(const T y);
 		FINLINE void setZ(const T z);
@@ -53,6 +55,9 @@ namespace Math {
 		FINLINE void Y(const T y) { setY(y); }
 		FINLINE void Z(const T z) { setZ(z); }
 		FINLINE void W(const T w) { setW(w); }
+
+
+		static const TQuaternion<T> oneQuaternion;
 
 		/**  @return right direction after it has been rotated */
 		FINLINE TVector3D<T> getAxisX() const;
